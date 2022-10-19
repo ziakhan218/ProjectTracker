@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+@section scripts {
+    @Scripts.Render("~/bundles/dashbaord")
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+}
+
+@section jsCode {
+    angular.bootstrap(document.getElementById("dashboardApp"), ['dashboardApp']);
+}
+
+<div id="dashboardApp">
+    <div ng-view></div>
+</div>
+

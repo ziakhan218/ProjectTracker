@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+<br />
+<br />
+<link href="~/Content/lightGallery.css" rel="stylesheet" />
+<script type="text/javascript" src="~/Scripts/lightGallery.js"></script>
+<script type="text/javascript">
+    function showGallery(sender) {
+        $(".lightGallery").lightGallery({
+            dynamic: true,
+            html: true,
+            mobileSrc: true,
+            dynamicEl: [
+                { "src": "img/img1.jpg", "thumb": "img/thumb1.jpg", "sub-html": "<div class='custom-html'><h4>Custom HTML</h4></div>", "mobileSrc": "img/mobile1.jpg" },
+                { "src": "img/img2.jpg", "thumb": "img/thumb2.jpg", "sub-html": "#dynamicHtml", "mobileSrc": "img/mobile2.jpg" },
+                { "src": "img/img3.jpg", "thumb": "img/thumb3.jpg", "sub-html": "#dynamicHtml", "mobileSrc": "img/mobile3.jpg" }
+            ]
+        });
+    }
+</script>
+
+<a id="dynamic" class="btn btn-primary lightGallery" href="javascript:showGallery(this);" style="margin-bottom: 40px;"><img id="imgPropertyGallery" src="http://openasset.grosvenor.com/Images/Projects/GBI-5/GBI_5_NEO_Bankside_jpg/GBI_5_NEO_Bankside_webview.jpg" style="width: 250px; height: 200px;">
+</a>

@@ -1,0 +1,104 @@
+﻿<style>
+    .md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar{background-color: #1a7462 !important;}
+    .md-progress-linear.md-default-theme .md-container, md-progress-linear .md-container {background-color: rgb(217, 241, 236);}
+</style>
+<div ng-controller="UserManagerCtrl" class="cp-panel">
+    <form name="manageUserForm" ng-submit="validateUserName()" novalidate>
+        <h3>Manage Users</h3>
+        <div class="row">
+                <div class="col-md-2" style="margin-top: 26px;"><span>User:</span></div>
+                <div class="col-md-10 ">
+                    <md-input-container>
+                        <label></label>
+                        <md-select ng-model="selectedUser" placeholder="Select User" ng-class="{disableddStyle:selectUserDisable}" style="width: 120px;" ng-disabled="selectUserDisable" ng-change="changeUser()">
+                            <md-option style="height:25px !important" ng-value="{{user.UserId}}" ng-repeat="user in users track by user.UserId">{{user.FirstName + ' ' + user.LastName}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <label style="font-weight:bold;margin-left: 52px;">
+                        <md-checkbox aria-label="Select All" name="showDeletedUser" ng-disabled="selectUserDisable" ng-model="showDeletedUsers" ng-change="getAllUsers()">
+                            Show only deleted users
+                        </md-checkbox>
+                    </label>
+                    <img src="/Images/ajax-loader.gif" style="height:14px;" ng-show="isProcessing" class="ng-hide">
+                </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="m-panel m-panel-1line col-md-12 collapsible" data-role="panel">
+                <div class="heading">
+                    <span><ng-md-icon icon="account_box" style="fill: #1a7462" size="35"></ng-md-icon></span>
+                    <span class="title" style="position: absolute;margin-top: 14px;"><strong>User Detail</strong> </span>
+                </div>
+                <div class="content">
+                    <div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2">
+                                <md-input-container>
+                                    <label>First Name</label>
+                                    <input ng-class="{validInput:!manageUserForm.firstName.$valid && submitted}" name="firstName" type="text" ng-disabled="userSection" required ng_model="firstName" />
+                                </md-input-container>
+                            </div>
+
+                            <div class="col-md-2"></div>
+                            <div class="col-md-6">
+                                <md-input-container>
+                                    <label>Last Name</label>
+                                    <input ng-class="{validInput:!manageUserForm.lastName.$valid && submitted}" name="lastName" type="text" ng-disabled="userSection" required ng_model="lastName" />
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2">
+                                <md-input-container>
+                                    <label>User Name</label>
+                                    <input ng-class="{validInput:!manageUserForm.userName.$valid && submitted}" name="userName" type="text" ng-disabled="userSection" required ng_model="userName" ng-pattern="/^[a-zA-Z0-9]+\\[a-zA-Z0-9]+$/"/>
+                                    <div ng-messages="manageUserForm.userName.$error">
+                                        <div ng-message="pattern" ng-hide="manageUserForm.userName.$valid">Please enter the pattern i.e. doman\username.</div>
+                                    </div>
+
+                                </md-input-container>
+                            </div>
+
+                            <div class="col-md-2"></div>
+                            <div class="col-md-6">
+                                <md-input-container>
+                                    <label>Email address</label>
+                                    <input ng-class="{validInput:!manageUserForm.email.$valid && submitted}" name="email" type="email" ng-disabled="userSection" required ng_model="emailAddress" />
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8 col-md-offset-8 pull-right">
+                <md-button ng-show="isShowAll" type="submit" class="md-success" ng-disabled="userSection||isProcessing">
+                    <ng-md-icon icon="save" style="fill: #1a7462" size="40"><md-tooltip>Save</md-tooltip></ng-md-icon>
+                </md-button>
+                <md-button ng-show="isShowAll" ng-click="showCustomDialog('You would loose any unsaved changes.','Are you sure you want to cancel the changes?','callReset')" class="md-default">
+                    <ng-md-icon icon="clear" style="fill: #1a7462" size="40"></ng-md-icon><md-tooltip>Cancel</md-tooltip>
+                </md-button>
+                <md-button ng-show="isShowAddNew" ng-click="addNewUser()" class="md-default">
+                    <ng-md-icon icon="person_add" style="fill: #1a7462" size="40"></ng-md-icon><md-tooltip>New User</md-tooltip>
+                </md-button>
+                <md-button ng-show="isShow" ng-click="editUser()" class="md-default">
+                    <ng-md-icon icon="edit" style="fill: #1a7462" size="40"><md-tooltip>Edit</md-tooltip>
+                </md-button>
+                <md-button ng-show="isShow && !showDeletedUsers" ng-click="showCustomDialog('Do you want to proceed?','You are about to delete User from Application.','callSetUserState')" class="md-danger">
+                    <ng-md-icon icon="delete" style="fill: #d9534f;" size="40"><md-tooltip>Delete User</md-tooltip>
+                </md-button>
+                <md-button ng-show="isShow && showDeletedUsers" ng-click="showCustomDialog('Do you want to proceed?','You are about to restore User from Application.','callSetUserState')" class="md-danger">
+                    <ng-md-icon icon="restore" style="fill: #d9534f;" size="40"><md-tooltip>Restore User</md-tooltip>
+                </md-button>
+            </div>
+        </div>
+    </form>
+</div>

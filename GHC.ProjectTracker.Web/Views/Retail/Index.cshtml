@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Retail Turnover";
+    ViewBag.Logo = "mayfairandbelgravia_Retail.png";
+    ViewBag.AppTitle = "Grosvenor Fund Management";
+}
+
+@section scripts {
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="~/App/Retail/App.js"></script>
+    <script src="~/App/Retail/Controllers/RetailController.js"></script>
+    <script src="~/App/Retail/Controllers/RetailViewController.js"></script>
+    <script src="~/App/Retail/Controllers/RetailInputController.js"></script>
+    <script src="~/App/Retail/Factories/RetailCommon.js"></script>
+    <script src="~/Scripts/angular-csv-import.js"></script>
+    <script src="~/Scripts/sequid.js"></script>
+    <script src="~/Scripts/xlsx.core.min.js"></script>
+    <script src="~/Scripts/jszip.js"></script>
+    <script src="~/Scripts/Blob.js"></script>
+    <script src="~/Scripts/FileSaver.js"></script>
+}
+
+@section jsCode {
+    angular.bootstrap(document.getElementById('retailApp'), ['retailApp']);
+}
+
+<div id="retailApp">
+    <div ng-view></div>
+</div>

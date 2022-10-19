@@ -1,0 +1,310 @@
+﻿
+
+<div ng-hide="editMode">
+    
+    
+    <button  class="btn btn-primary pull-right" ng-click="Edit()" style="margin-right:5px;">Edit</button>
+    <h3 class="text-center">{{project.ProjectName}}</h3>
+</div>
+
+
+    <div>
+        <form name="inputItemForm" style="margin-top: 20px;">
+            <div class="cp-form cp-form-paired clearfix">
+                <div class="form-group">
+                    <label>Project Reference No:</label>
+                    <input type="text" name="ProjectReference" ng-required="true" class="form-control" ng-readonly="!editing" ng-model="project.ProjectReference">
+                </div>
+                <div class="form-group">
+                    <label>Review:</label>
+                    <div ng-hide="true" ng-repeat='item in lookups.Reviews | customArray:selectedIds.Review:"Id"' style="border: 1px solid;border-color: #eee;background: #eee;height: 34px;overflow:hidden !important;text-overflow: ellipsis;">
+                        {{GetReivew(item.Name,selectedIds.Review.length)}}
+                    </div>
+                    <input ng-readonly="!editing" ng-hide="UpdateRecord" type="text" class="form-control" ng-model="reviewStr" style="overflow: hidden;text-overflow: ellipsis;" maxlength="10">
+
+                    <multiselect name="Review" ng-show="UpdateRecord" ms-header="All" multiple="true" required ng-class="{'has-error':  inputItemForm.Review.$invalid && !inputItemForm.Review.$pristine}" showcheckuncheckall="false" ng-model="selectedIds.Review" template-url="../Scripts/multiselect.tmpl.html" options="item.Id as item.Name for item in lookups.Reviews | filter:{Category:'Review'}"></multiselect>
+
+                </div>
+                <div class="form-group">
+                    <label>Project Name:</label>
+                    <input type="text" name="ProjectName" ng-change="CheckName()" autocomplete="off" required ng-class="{'has-error':  inputItemForm.ProjectName.$invalid && !inputItemForm.ProjectName.$pristine}" class="form-control" ng-readonly="!editing" ng-model="project.ProjectName">
+                </div>
+
+                <div class="form-group">
+                    <label>Project Type:</label>
+                    <select class="form-control input-sm" ng-disabled="!editing" name="ProjectType" required ng-class="{'has-error':  inputItemForm.ProjectType.$invalid && !inputItemForm.ProjectType.$pristine}" ng-options="item.Id as item.Name for item in lookups.ProjectType" ng-model="project.ProjectType"> </select>
+                </div>
+                <div class="form-group" style="margin:-11px 182px 4px;width:100%;color:#d91414">
+                    <span>{{ErrorMessage}}</span>
+                </div>
+
+                <div class="form-group" style="width:100%;">
+                    <label>Project Description:</label>
+                    <textarea class="form-control" ng-readonly="!editing" rows="3" name="ProjectDescription" required ng-model="project.ProjectDescription"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Category:</label>
+                    <select name="Category" class="form-control input-sm" ng-disabled="!editing" ng-options="item.Id as item.Name for item in lookups.Category " required ng-class="{'has-error':  inputItemForm.Category.$invalid && !inputItemForm.Category.$pristine}" ng-model="project.Category"></select>
+                </div>
+                <div class="form-group">
+                    <label>System Type:</label>
+                    <select class="form-control input-sm" name="SystemType" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.SystemType.$invalid && !inputItemForm.SystemType.$pristine}" ng-options="item.Id as item.Name for item in lookups.SystemTypeName" ng-model="project.SystemType"> </select>
+                </div>
+                <div class="form-group">
+                    <label>New Or Existing:</label>
+                    <select class="form-control input-sm" ng-disabled="!editing" name="NewOrExisting" required ng-class="{'has-error':  inputItemForm.ProjectType.$invalid && !inputItemForm.ProjectType.$pristine}" ng-options="item.Id as item.Name for item in lookups.NewOrExisting" ng-model="project.NewOrExisting"> </select>
+                </div>
+                <div class="form-group">
+                    <label>Business Project Manager:</label>
+                    <select name="BusinessProjectManager" class="form-control input-sm" ng-disabled="!editing" ng-options="x.UserId as x.FirstNameLastName for x in users " required ng-class="{'has-error':  inputItemForm.BusinessProjectManager.$invalid && !inputItemForm.BusinessProjectManager.$pristine}" ng-model="project.BusinessProjectManager"></select>
+                </div>
+                <div class="form-group">
+                    <label>IT Project Manager:</label>
+                    <select name="ITProjectManager" class="form-control input-sm" ng-disabled="!editing" ng-options="x.UserId as x.FirstNameLastName for x in users " required ng-class="{'has-error':  inputItemForm.ITProjectManager.$invalid && !inputItemForm.ITProjectManager.$pristine}" ng-model="project.ITProjectManager"></select>
+                </div>
+                <div class="form-group">
+                    <label>Status:</label>
+                    <select name="Status" class="form-control input-sm" ng-disabled="!editing" ng-options="item.Id as item.Name for item in lookups.Status" required ng-class="{'has-error':  inputItemForm.Status.$invalid && !inputItemForm.Status.$pristine}" ng-model="project.Status"></select>
+                </div>
+                <div class="form-group">
+                    <label>Priority:</label>
+                    <select name="Priority" class="form-control input-sm" ng-disabled="!editing" required ng-options="item.Id as item.Name for item in lookups.Priority | filter:{Category:'Priority'} " ng-model="project.Priority"></select>
+                </div>
+                <div class="form-group">
+                    <label>Approved Budget External Cost:</label>
+                    <input type="text" class="form-control input-sm" ng-readonly="!editing" required name="ApprovedBudgetExternalCost" autocomplete="off" ng-model="project.ApprovedBudgetExternalCost" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}" numbers-only />
+                </div>
+                <div class="form-group">
+                    <label>External Cost Currency:</label>
+
+                    <select class="form-control input-sm" name="ExternalCostCurrency" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.ExternalCostCurrency.$invalid && !inputItemForm.ExternalCostCurrency.$pristine}" ng-options="item.Id as item.Name for item in lookups.ExternalCostCurrency" ng-model="project.ExternalCostCurrency"> </select>
+                </div>
+                <div class="form-group">
+                    <label>Forecast External Cost:</label>
+                    <input type="text" class="form-control input-sm" ng-readonly="!editing" name="ForecastExternalCost" ng-model="project.ForecastExternalCost " autocomplete="off" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}" numbers-only />
+                </div>
+                <div class="form-group">
+                    <label>Baseline Go Live Date:</label>
+                    <input ng-hide="UpdateRecord" type="text" class="form-control input-sm"
+                           datepicker-popup="dd MMM yyyy" autocomplete="off" ng-readonly="true"
+                           ng-model="project.BaselineGoLiveDate">
+                    <div class="input-group input-group-sm" ng-show="UpdateRecord">
+                        <input type="text" id="BaselineGoLiveDate" name="BaselineGoLiveDate" datepicker-localdate tabindex="1" class="form-control input-sm"
+                               style="width: 91%; height: 34px; z-index:0;padding-left: 4px;  z-index:0; background-color:#fff ; " datepicker-popup="dd MMM yyyy" autocomplete="off" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}"
+                               ng-model="project.BaselineGoLiveDate" is-open="BaselineGoLiveDate" show-weeks="true" show-button-bar="true" datepicker-options="dateOptions" datepicker-mode="'day'" ng-readonly="true">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event, 'BaselineGoLiveDate')" style="margin-left: -4px;height: 34px; z-index:0;width: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>Target Go Live Date:</label>
+                    <input type="text" class="form-control input-sm" ng-hide="UpdateRecord" datepicker-popup="dd MMM yyyy" ng-readonly="true" ng-model="project.TargetGoLiveDate">
+
+                    <div class="input-group input-group-sm" ng-show="UpdateRecord">
+                        <input type="text" id="TargetGoLiveDate" name="TargetGoLiveDate" datepicker-localdate tabindex="1" class="form-control" ng-readonly="!editing"
+                               style="width: 91%; height: 34px; z-index:0" datepicker-popup="dd MMM yyyy" autocomplete="off" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}"
+                               ng-model="project.TargetGoLiveDate" is-open="TargetGoLiveDate" show-weeks="true" show-button-bar="true" datepicker-options="dateOptions" datepicker-mode="'day'">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event, 'TargetGoLiveDate')" style="height: 34px; z-index:0;width: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Modified Date:</label>
+                    <input type="text" class="form-control input-sm" datepicker-popup="dd MMM yyyy" ng-readonly="true" ng-model="project.DateModified">
+
+
+                </div>
+                <div class="form-group">
+                    <label>Modified By:</label>
+                    <input type="text" name="UpdatedBy" autocomplete="off" class="form-control input-sm" ng-readonly="true" ng-model="project.UpdatedBy">
+                </div>
+
+                <div class="form-group" style="width:100%;">
+                    <label>Comments:</label>
+                    <textarea type="text" name="RetailCategory" rows="3" autocomplete="off" class="form-control input-sm" ng-readonly="!editing" ng-model="project.Comments"></textarea>
+                </div>
+                <div class="form-group" style="width:100%;">
+                    <label>Issues And Resolutions:</label>
+                    <textarea class="form-control" ng-readonly="!editing" rows="3" name="IssuesAndResolutions" ng-model="project.IssuesAndResolutions"></textarea>
+                </div>
+                <div class="form-group" style="width:100%;">
+                    <label>Changes Since Last Issue:</label>
+                    <textarea class="form-control" ng-readonly="!editing" rows="3" name="ChangesSinceLastIssue" ng-model="project.ChangesSinceLastIssue"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Closed For Reporting:</label>
+                    <input type="radio" name="ClosedForReporting" style="display: inline" ng-model="project.ClosedForReporting" ng-value="true" /> Yes
+                    <input type="radio" name="ClosedForReporting" style="display: inline" ng-model="project.ClosedForReporting" ng-value="false" />  No
+
+                </div>
+                <div class="form-group">
+                    <label>Key Project:</label>
+                    <input type="radio" name="KeyProject" style="display: inline" ng-model="project.KeyProject" ng-value="true" /> Yes
+                    <input type="radio" name="KeyProject" style="display: inline" ng-model="project.KeyProject" ng-value="false" />  No
+                </div>
+                <div class="form-group">
+                    <label>GW1 Project Brief Approval Date:</label>
+                    <input type="text" class="form-control" ng-hide="UpdateRecord" datepicker-popup="dd MMM yyyy" ng-readonly="true" ng-model="project.GW1ProjectBriefApprovalDate">
+                    <div ng-show="UpdateRecord" class="input-group input-group-sm">
+                        <input type="text" id="GW1ProjectBriefApprovalDate" name="GW1ProjectBriefApprovalDate" datepicker-localdate tabindex="1" class="form-control" ng-readonly="!editing"
+                               style="width: 91%; height: 34px; z-index:0;" datepicker-popup="dd MMM yyyy" autocomplete="off" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}"
+                               ng-model="project.GW1ProjectBriefApprovalDate" is-open="GW1ProjectBriefApprovalDate" show-weeks="true" show-button-bar="true" datepicker-options="dateOptions" datepicker-mode="'day'" ng-readonly="true">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event, 'GW1ProjectBriefApprovalDate')" style="height: 34px; z-index:0;width: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>GW2 Project Brief Approval Date:</label>
+                    <input type="text" class="form-control" ng-hide="UpdateRecord" datepicker-popup="dd MMM yyyy" ng-readonly="true" ng-model="project.GW2ProjectBriefApprovalDate">
+                    <div ng-show="UpdateRecord" class="input-group input-group-sm">
+                        <input type="text" id="GW2ProjectBriefApprovalDate" name="GW2ProjectBriefApprovalDate" datepicker-localdate tabindex="1" class="form-control" ng-readonly="!editing"
+                               style="width: 91%; height: 34px; z-index:0;" datepicker-popup="dd MMM yyyy" autocomplete="off" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}"
+                               ng-model="project.GW2ProjectBriefApprovalDate" is-open="GW2ProjectBriefApprovalDate" show-weeks="true" show-button-bar="true" datepicker-options="dateOptions" datepicker-mode="'day'" ng-readonly="true">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event, 'GW2ProjectBriefApprovalDate')" style="height: 34px; z-index:0;width: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>GW4 Go Live Approval Date:</label>
+                    <input type="text" class="form-control" ng-hide="UpdateRecord" datepicker-popup="dd MMM yyyy" ng-readonly="true" ng-model="project.GW4GoLiveApprovalDate">
+                    <div ng-show="UpdateRecord" class="input-group input-group-sm">
+                        <input type="text" id="GW4GoLiveApprovalDate" name="GW4GoLiveApprovalDate" datepicker-localdate tabindex="1" class="form-control" ng-readonly="!editing"
+                               style="width: 91%; height: 34px; z-index:0;" datepicker-popup="dd MMM yyyy" autocomplete="off" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}"
+                               ng-model="project.GW4GoLiveApprovalDate" is-open="GW4GoLiveApprovalDate" show-weeks="true" show-button-bar="true" datepicker-options="dateOptions" datepicker-mode="'day'" ng-readonly="true">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event, 'GW4GoLiveApprovalDate')" style="height: 34px; z-index:0;width: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>GW5 Project Closure Approval Date:</label>
+                    <input type="text" class="form-control" ng-hide="UpdateRecord" datepicker-popup="dd MMM yyyy" ng-readonly="true" ng-model="project.GW5ProjectClosureApprovalDate">
+                    <div ng-show="UpdateRecord" class="input-group input-group-sm">
+                        <input type="text" id="GW5ProjectClosureApprovalDate" name="GW5ProjectClosureApprovalDate" datepicker-localdate tabindex="1" class="form-control" ng-readonly="!editing"
+                               style="width: 91%; height: 34px; z-index:0;" datepicker-popup="dd MMM yyyy" autocomplete="off" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}"
+                               ng-model="project.GW5ProjectClosureApprovalDate" is-open="GW5ProjectClosureApprovalDate" show-weeks="true" show-button-bar="true" datepicker-options="dateOptions" datepicker-mode="'day'" ng-readonly="true">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event, 'GW5ProjectClosureApprovalDate')" style="height: 34px; z-index:0;width: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Project Requested By:</label>
+                    <select name="ProjectRequestedBy" class="form-control" ng-disabled="!editing" ng-options="x.UserId as x.FirstNameLastName for x in users" required ng-class="{'has-error':  inputItemForm.ITProjectManager.$invalid && !inputItemForm.ITProjectManager.$pristine}" ng-model="project.ProjectRequestedBy"></select>
+                </div>
+                <div class="form-group">
+                    <label>Strategy Level:</label>
+                    <select name="StrategyLevel" class="form-control input-sm" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.ITProjectManager.$invalid && !inputItemForm.ITProjectManager.$pristine}" ng-options="item.Id as item.Name for item in lookups.StrategyLevel | filter:{Category:'StrategyLevel'} " ng-model="project.StrategyLevel"></select>
+                </div>
+                <div class="form-group">
+                    <label>Strategy Group:</label>
+                    <select name="StrategyGroup" class="form-control input-sm" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.ITProjectManager.$invalid && !inputItemForm.ITProjectManager.$pristine}" ng-options="item.Id as item.Name for item in lookups.StrategyGroup | filter:{Category:'StrategyGroup'} " ng-model="project.StrategyGroup"></select>
+                </div>
+                <div class="form-group" style="margin-top:-43px;">
+                    <label>Systems Strategy:</label>
+                    <select name="SystemsStrategy" class="form-control input-sm" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.ITProjectManager.$invalid && !inputItemForm.ITProjectManager.$pristine}" ng-options="item.Id as item.Name for item in lookups.SystemsStrategy  | filter:{Category:'SystemsStrategy'} " ng-model="project.SystemsStrategy"></select>
+
+                </div>
+                <div class="form-group">
+                    <label>Start Year:</label>
+                    <input type="text" class="form-control input-sm" ng-hide="UpdateRecord" datepicker-popup="dd MMM yyyy" ng-readonly="true" ng-model="project.StartYear">
+                    <div ng-show="UpdateRecord" class="input-group input-group-sm">
+                        <input type="text" name="StartYear" is-open="StartYear" style="width: 91%; height: 34px; z-index:0;" readonly class="form-control" ng-readonly="!editing" uib-datepicker-popup="yyyy" ng-model="project.StartYear" datepicker-options="dateYearOptions" show-button-bar="false" datepicker-mode="'year'" date-disabled="disabled(date, mode)">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event, 'StartYear')" style="height: 34px; z-index:0;width: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="form-group" style="margin-top:-43px;">
+                    <label>Opco:</label>
+
+                    <div ng-hide="true" ng-repeat='item in lookups.OpCo | customArray:selectedIds.OpCoId:"Id"' style="border: 1px solid;border-color: #eee;background: #eee;height: 34px;overflow:hidden !important;text-overflow: ellipsis;">
+                        {{getOpco(item.Name,selectedIds.OpCoId.length)}}
+                    </div>
+                    <input ng-readonly="!editing" ng-hide="UpdateRecord" type="text" class="form-control" ng-model="OpcoStr" style="overflow: hidden;text-overflow: ellipsis;" maxlength="10">
+                    <multiselect ng-show="UpdateRecord" ms-header="All" multiple="true" required ng-class="{'has-error':  inputItemForm.ITProjectManager.$invalid && !inputItemForm.ITProjectManager.$pristine}" showcheckuncheckall="false" ng-model="selectedIds.OpCoId" template-url="../Scripts/multiselect.tmpl.html" options="item.Id as item.Name for item in lookups.OpCo | filter:{Category:'Opco'}"></multiselect>
+
+                </div>
+                <div class="form-group">
+                    <label> Required Documentation:</label>
+                    <div ng-hide="true" ng-repeat='item in lookups.RequiredDocumentation | customArray:selectedIds.DocumentaionId:"Id"' style="border: 1px solid;border-color: #eee;background: #eee;height: 34px;overflow:hidden !important;text-overflow: ellipsis;">
+
+                        {{ReqDocumentation(item.Name,selectedIds.DocumentaionId.length)}}
+
+                    </div>
+                    <input ng-readonly="!editing" ng-hide="UpdateRecord" type="text" class="form-control" ng-model="documentationStr" style="overflow: hidden;text-overflow: ellipsis;" maxlength="10">
+
+                    <multiselect ms-header="All" ng-show="UpdateRecord" multiple="true" required ng-class="{'has-error':  inputItemForm.ITProjectManager.$invalid && !inputItemForm.ITProjectManager.$pristine}" showcheckuncheckall="false" ng-model="selectedIds.DocumentaionId" template-url="../Scripts/multiselect.tmpl.html" options="item.Id as item.Name for item in lookups.RequiredDocumentation | filter:{Category:'Documentation'}"></multiselect>
+                </div>
+                <div class="form-group" style="margin-top:-43px;">
+                    <label>GW0 Project Kick Of Date:</label>
+                    <input type="text" class="form-control" ng-hide="UpdateRecord" datepicker-popup="dd MMM yyyy" ng-readonly="true" ng-model="project.GW0ProjectKickOffDate">
+                    <div ng-show="UpdateRecord" class="input-group input-group-sm">
+                        <input type="text" id="GW0ProjectKickOffDate" name="GW0ProjectKickOffDate" datepicker-localdate tabindex="1" class="form-control"
+                               style="width: 91%; height: 34px; z-index:0; background-color:#fff; " datepicker-popup="dd MMM yyyy" autocomplete="off" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}" ng-readonly="true"
+                               ng-model="project.GW0ProjectKickOffDate" is-open="GW0ProjectKickOffDate" show-weeks="true" show-button-bar="true" datepicker-options="dateOptions" datepicker-mode="'day'">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event, 'GW0ProjectKickOffDate')" style="height: 34px; z-index:0;width: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>GW3 Design Date:</label>
+                    <input type="text" class="form-control" ng-hide="UpdateRecord" datepicker-popup="dd MMM yyyy" ng-readonly="true" ng-model="project.GW3DesignDate">
+                    <div ng-show="UpdateRecord" class="input-group input-group-sm">
+
+                        <input type="text" id="GW3DesignDate" name="GW3DesignDate" datepicker-localdate tabindex="1" class="form-control"
+                               style="width: 91%; height: 34px; background-color:#fff; z-index:0;" datepicker-popup="dd MMM yyyy" autocomplete="off" ng-class="{'has-error':  inputItemForm.Name.$invalid && !inputItemForm.Name.$pristine}"
+                               ng-model="project.GW3DesignDate" is-open="GW3DesignDate" show-weeks="true" show-button-bar="true" datepicker-options="dateOptions" datepicker-mode="'day'" ng-readonly="true">
+                        <span class="input-group-btn">
+                            <button type="button" ng-readonly="!editing" class="btn btn-default" ng-click="open($event, 'GW3DesignDate')" style="height: 34px; z-index:0;width: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:-43px;">
+                    <label>Project Request:</label>
+                    <select name="ProjectRequest" class="form-control input-sm" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.ProjectRequest.$invalid && !inputItemForm.ProjectRequest.$pristine}" ng-options="item.Id as item.Name for item in lookups.ProjectRequest | filter:{Category:'ProjectRequest'}" ng-model="project.ProjectRequest"></select>
+                </div>
+                <div class="form-group" style="width:100%;">
+                    <label>Programme Committee Comments:</label>
+                    <textarea class="form-control" ng-readonly="!editing" rows="3" name="ProgCommComments" ng-model="project.ProgCommComments"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Risk Register Flag:</label>
+                    <select name="RiskRegisterFlag" class="form-control input-sm" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.RiskRegisterFlag.$invalid && !inputItemForm.RiskRegisterFlag.$pristine}" ng-options="item.Id as item.Name for item in lookups.RiskRegisterFlag | filter:{Category:'RiskRegisterFlag'} " ng-model="project.RiskRegisterFlag"></select>
+                </div>
+                <div class="form-group">
+                    <label>Change Register Flag:</label>
+                    <select name="ChangeRegisterFlag" class="form-control input-sm" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.ChangeRegisterFlag.$invalid && !inputItemForm.ChangeRegisterFlag.$pristine}" ng-options="item.Id as item.Name for item in lookups.ChangeRegisterFlag | filter:{Category:'ChangeRegisterFlag'}" ng-model="project.ChangeRegisterFlag"></select>
+                </div>
+                <div class="form-group">
+                    <label>Project Plan Flag:</label>
+                    <select name="ProjectPlanFlag" class="form-control input-sm" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.ITProjectManager.$invalid && !inputItemForm.ITProjectManager.$pristine}" ng-options="item.Id as item.Name for item in lookups.ProjectPlanFlag | filter:{Category:'ProjectPlanFlag'}" ng-model="project.ProjectPlanFlag"></select>
+
+                </div>
+                <div class="form-group">
+                    <label>Test Plan Flag:</label>
+                    <select name="TestPlanFlag" class="form-control input-sm" ng-disabled="!editing" required ng-class="{'has-error':  inputItemForm.ITProjectManager.$invalid && !inputItemForm.ITProjectManager.$pristine}" ng-options="item.Id as item.Name for item in lookups.TestPlanFlag | filter:{Category:'TestPlanFlag'} " ng-model="project.TestPlanFlag"></select>
+                </div>
+
+            </div>
+
+            <div ng-show="UpdateRecordbutton" class="modal-footer" style="text-align:center">
+                <button type="submit" class="btn btn-primary" ng-click="saveProject()" ng-disabled="Active ||saving || !inputItemForm.$dirty "><i class="glyphicon glyphicon-floppy-disk"></i> Save</button>
+                <button type="button" class="btn btn-default" ng-click="Close()" ng-disabled="saving">Close</button>
+            </div>
+            <div ng-show="NewRecord" class="modal-footer" style="text-align:center">
+                <button type="submit" class="btn btn-primary" ng-click="saveProject()" ng-disabled="Active || saving || inputItemForm.$invalid "><i class="glyphicon glyphicon-floppy-disk"></i> Save</button>
+                <button type="button" class="btn btn-default" ng-click="Cancil()" ng-disabled="saving">Cancil</button>
+            </div>
+        </form>
+    </div>
+

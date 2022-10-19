@@ -1,0 +1,41 @@
+﻿<style>
+
+
+    select.ui-grid-filter-select {
+    width:100% !important;
+    }
+</style>
+<script>
+
+</script>
+<div class="m-panel m-panel-1line col-md-12 collapse in collapsible collapsed" data-toggle="collapse" data-role="panel" style="margin-bottom: 15px;">
+    <div class="heading">
+        <span class="icon btn-default"></span>
+        <span class="title">VSTS Setting</span>
+    </div>
+    <div class="content">
+        <form name="VSOForm" style="margin-top: 20px;">
+            <div class="cp-form cp-form-paired clearfix">
+                <div class="form-group ">
+                    <label>VSTS Path:</label>
+                    <input type="url" name="VSTSPath" ng-required="true" class="form-control"  ng-model="project.Path">
+                </div>
+            </div>
+            <div  style="text-align:center">
+                <button type="submit" class="btn btn-primary" ng-click="saveVSTSPath()"><i class="glyphicon glyphicon-floppy-disk"></i> Save</button>
+
+            </div>
+        </form>
+    </div>
+    
+</div>
+<br />
+<div class="col-md-12">
+    <div ui-grid="gridOptions" class="grid" ui-grid-pagination ui-grid-expandable style="overflow:hidden;font-size:75%;height:646px;opacity:{{isProcessing ? '0.5' : '1'}}"></div>
+</div>
+
+<div class="cp-pagination">
+    <nav>
+        <uib-pagination total-items="gridOptions.totalItems" previous-text="Prev" ng-model="currentPage" items-per-page="gridOptions.paginationPageSize" max-size="10" boundary-links="true" ng-change="pageChanged()"></uib-pagination>
+    </nav>
+</div>

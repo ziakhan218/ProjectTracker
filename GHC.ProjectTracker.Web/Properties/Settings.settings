@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GHC.ProjectTracker.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ApplicationADConfigFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\Config\ApplicationADConfig.xml</Value>
+    </Setting>
+    <Setting Name="UnAuthorisedMessage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">You are not authorised to access this application. Please contact System Administrator for further help.</Value>
+    </Setting>
+    <Setting Name="UnAuthorisedApiMessage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">You are not authorised to do this operation</Value>
+    </Setting>
+    <Setting Name="ITProjectTrackerAdminADRole" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ITProjectTracker_Admin</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,25 @@
+﻿
+<div class="row clearfix" style="margin:25px 0">
+    <div class="col-md-6 cp-results-summary">
+        <span grid-stats page-number="gridApi.pagination.getPage()" page-size="gridOptions.paginationPageSize" total-items="gridOptions.totalItems"></span>
+     </div>
+
+    <div class="col-md-6 text-right">
+        <button type="button" ng-disabled="isProcessing" ng-click="createProject()" class="btn btn-primary btn-sm"> Create New Project</button>
+    </div>
+</div>
+
+<div ui-grid="gridOptions" class="grid" ui-grid-pagination ui-grid-selection style="overflow:hidden;font-size:75%;height:646px;opacity:{{isProcessing ? '0.5' : '1'}}"></div>
+<div class="cp-pagination">
+    <nav>
+        <uib-pagination total-items="gridOptions.totalItems" previous-text="Prev" ng-model="currentPage" items-per-page="gridOptions.paginationPageSize" max-size="10" boundary-links="true" ng-change="pageChanged()"></uib-pagination>
+    </nav>
+</div>
+<div class="noDataTxt" ng-if="gridOptions.data.length==0">No Records Found</div>
+<script type="text/ng-template" id="actionCellTemplate.html">
+    <div style="padding:1px 0 0 1px">
+        <button type="button" class="btn btn-xs btn-warning" ng-disabled="grid.appScope.isProcessing" ng-click="grid.appScope.Update(row)"><i class="glyphicon glyphicon-pencil"></i></button>
+        
+    </div>
+</script>
+

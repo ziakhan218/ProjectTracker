@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html id="htmlRoot">
+<head>
+    <base href="/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IT Project Tracker - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/metroui")
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+</head>
+
+<body ng-app="main" ng-controller="mainController">
+    <div class="cp-footer-push">
+        <header>
+            <div class="cp-header">
+                <div class="cp-header-main">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="/"><img src="~/Images/logo2.png" alt="Grosvenor" class="cp-logo-right"></a>
+                                <a href="/"><img src="~/Images/mayfairandbelgravia.png" alt="IT Project Tracker" class="cp-logo-left"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cp-primary-nav">
+                    <div class="container">
+                        <div class="row">
+                            <nav class="navbar navbar-default">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        @*<li ng-repeat="x in menuList | filter : { ParentId: null }:true | orderBy : 'SequenceNumber'" id="m{{x.Id}}menu">
+                                            <a href="{{x.ModulePath}}" ng-bind="x.ModuleName"></a>
+                                        </li>*@
+                                         
+                                      
+                                            <li id="administrationmenu">
+                                                <a href="/ITProjectTracker/#/ProjectTrackerView">IT Project Tracker</a>
+                                            </li>
+                                            <li id="administrationmenu">
+                                                <a href="/Dashboard/#/DashboardView">Dashboard</a>
+                                            </li>
+                                            <li id="administrationmenu">
+                                                <a href="/Admin/#/ManageUsers">Administration</a>
+                                            </li>
+                                    </ul>
+                                </div><!-- /.navbar-collapse -->
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="cp-secondary-nav">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav class="navbar navbar-default" role="navigation">
+                                    <!-- Collect the nav links, forms, and other content for toggling -->                                  
+                                    @*<ul class="nav navbar-nav collapse" ng-repeat="x in menuList | filter : { ParentId: null }:true | orderBy : 'SequenceNumber'" id="m{{x.Id}}submenu" data-mainmenu="#m{{x.Id}}menu">
+                                        <li ng-repeat="y in menuList | filter:{ParentId:x.Id}:true | orderBy : 'SequenceNumber'" ng-hide="y.ModuleName.indexOf('Project Details') !=-1 && myValue">
+
+                                            <a href="{{y.ModulePath}}" ng-bind="y.ModuleName"  ></a>
+                                        </li>
+                                    </ul>*@                                    
+ 
+                                  
+                                        <ul class="nav navbar-nav collapse" id="adminstrationsubmenu" data-mainmenu="#administrationmenu">
+                                            <li><a href="/Admin/#/UploadConfig">Project Details</a></li>
+                                        </ul>
+                                    
+
+                                    <ul class="nav navbar-nav collapse" id="projetsAll">
+                                        <li><a href="#">PROJECTS</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav collapse" id="cashflowreport">
+                                        <li><a href="#">PROJECT Detail</a></li>
+                                        <li><a href="/ITProjectTracker/#/ProjectResources">Project Resources</a></li>
+                                        <li><a href="/ITProjectTracker/#/BacklogItemsView">WORK ITEMS</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav collapse" id="AdminSubmenueUsers">
+                                        <li><a href="/Admin/#/ManageUsers">Manage Users</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav collapse" id="DashboardSubmenue">
+                                        <li><a href="/Dashboard/#/DashboardView"></a>My Dashboard</li>
+                                    </ul>
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="cp-main">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 cp-panel" id="detail" style="margin: 0 auto;">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <div class="cp-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="cp-footer-inner">
+                            <ul class="cp-link-list">
+                                <li>
+                                    &copy; @DateTime.Now.Year - @(!string.IsNullOrEmpty(ViewBag.AppTitle) ? ViewBag.AppTitle : "Grosvenor")
+                                </li>
+                                <li style="text-transform:none;">
+                                    @ViewBag.UserWelcomeNote
+                                </li>
+                                @*<li>
+                                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                        <a href="mailto:tom.lewis@grosvenor.com?subject=Data Portal Feedback">Send Feedback</a>
+                                    </li>
+                                    <li>
+                                        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                        <a href="#">Need Help?</a>
+                                    </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        window.MyApp = {};
+    </script>
+
+    <script src="~/App/App.js"></script>
+    <script src="~/App/MainController.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            ShowMenu(window.location.pathname + window.location.hash, true);
+
+            ///TODO Check later if this can be done simpler
+            var delay = 0, setTimeoutConst, cursorOnSubmenu;
+
+            $('body').on({
+                mouseenter: function () {
+                    var h = $(this).attr('href');
+                    ShowMenu(h, false);
+                },
+                mouseleave: function () {
+                    clearTimeout(setTimeoutConst);
+                    setTimeoutConst = setTimeout(function () {
+                        if (!cursorOnSubmenu) {
+                            ShowMenu(window.location.pathname + window.location.hash, true);
+                        }
+                    }, delay);
+                }
+            }, '.cp-primary-nav ul a');
+
+            $('body').on({
+                mouseenter: function () {
+                    cursorOnSubmenu = true;
+                },
+                mouseleave: function () {
+                    cursorOnSubmenu = false;
+                    ShowMenu(window.location.pathname + window.location.hash, true);
+                }
+            }, '.cp-secondary-nav ul');
+
+            setTimeout(function () { $('.cp-primary-nav ul a:first-child').trigger('mouseleave') }, 500);
+
+            
+        });
+
+        function ShowMenu(anchorHref, makeActive) {           
+            
+            
+            //NOTE: Until we support HTML5 urls
+            //Remove trailing '/' or '#'
+            
+            var checkforDetailpage = window.location.hash.indexOf('ProjectDetails');
+            var lastChar = anchorHref.substr(-1);
+            while (lastChar == '/' || lastChar == '#') {
+                anchorHref = anchorHref.substring(0, anchorHref.length - 1);
+                lastChar = anchorHref.substr(-1);
+            }
+            
+   
+
+            var subMenuListItem = $('.cp-secondary-nav ul a[href="' + anchorHref + '"]').parent();
+
+            if (subMenuListItem.length == 0 && (anchorHref.indexOf('/ITProjectTracker/#/ProjectTrackerView') == 0)) {
+                subMenuListItem = $('#projetsAll li:first-child');
+            }
+
+            if (subMenuListItem.length == 0 && (anchorHref.indexOf('/Admin/#/ManageUsers') == 0)) {
+                subMenuListItem = $('#AdminSubmenueUsers li:first-child');
+            }
+         
+            if (subMenuListItem.length == 0 && (anchorHref.indexOf('/Dashboard/#/DashboardView') == 0)) {
+                subMenuListItem = $('#DashboardSubmenue li:first-child');
+            }
+
+            if ((checkforDetailpage > 0)) {
+                subMenuListItem = $('#cashflowreport li:first-child');                
+            }
+            
+            //Show submenu
+            var submenuList = subMenuListItem.parent();
+            var allsubmenus = $('.cp-secondary-nav ul');
+
+            allsubmenus.addClass('collapse');
+            submenuList.removeClass('collapse');
+
+            //Select active - mainmenu & submenu
+            if (makeActive) {
+                $(submenuList.data('mainmenu')).addClass('active');
+                submenuList.children().removeClass('active');
+                subMenuListItem.addClass('active');
+            }
+        }
+    </script>
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/ui-grid.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-touch.js"></script>
+    <link href="~/Content/ui-grid.css" rel="stylesheet" />
+    <script type="text/javascript">
+        MyApp.rootPath = '@Url.Content("~")';
+        @RenderSection("jsCode", required: false)
+    </script>
+</body>
+
+</html>

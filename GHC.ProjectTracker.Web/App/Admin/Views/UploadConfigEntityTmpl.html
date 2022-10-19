@@ -1,0 +1,159 @@
+﻿<form name="uploadConfigForm" ng-submit="saveConfig(uploadConfigForm.$valid)" novalidate>
+    <div class="modal-header">
+        {{ currentGridRow.Name === undefined ? 'Add Config' : currentGridRow.Name }}
+        <button type="button" class="close" aria-label="Close" ng-click="$dismiss()"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="modal-body amp-face">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label><strong>Name</strong></label>
+                    <input type="text" name="Name" maxlength="100" required ng-class="{'has-error':  uploadConfigForm.Name.$invalid && !uploadConfigForm.Name.$pristine}" class="form-control input-sm" ng-model="selectedItem.Name" />
+                </div>
+
+                <div class="form-group">
+                    <label><strong>Parent Menu</strong></label>
+                    <select class="form-control input-sm" name="Parent" required ng-class="{'has-error':  uploadConfigForm.Parent.$invalid && !uploadConfigForm.Parent.$pristine}" ng-options="opt.Id as opt.ModuleName for opt in parentMenuList" ng-model="selectedItem.ParentMenuId">
+                        <option value="">-Select-</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><strong>Url</strong></label>
+                    <input type="text" class="form-control input-sm readonly" readonly name="ModulePath" ng-model="selectedItem.ModulePath" />
+                </div>
+
+                <div class="form-group">
+                    <label><strong>Menu Sequence No.</strong></label>
+                    <input type="text" name="SequenceNumber" required ng-class="{'has-error': uploadConfigForm.SequenceNumber.$invalid && !uploadConfigForm.SequenceNumber.$pristine }" class="form-control input-sm" ng-model="selectedItem.SequenceNumber" />
+                </div>
+
+                <div class="form-group">
+                    <label><strong>AD Group</strong></label>
+                    <multiselect ms-header="Select" multiple="true" name="RoleIds" required ng-class="{'has-error':  uploadConfigForm.RoleIds.$invalid && !uploadConfigForm.RoleIds.$pristine}" showcheckuncheckall="false" ng-model="selectedItem.RoleIds" template-url="Scripts/multiselect.tmpl.html" options="opt.Id as opt.Name for opt in adGroupList"></multiselect>
+                </div>
+
+                <div class="form-group">
+                    <label><strong>Sheet Names</strong></label>
+                    <input type="text" class="form-control input-sm" ng-model="selectedItem.SheetNames" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label><strong>Catalog</strong></label>
+                    <input type="text" required name="Catalog" ng-class="{'has-error': uploadConfigForm.Catalog.$invalid && !uploadConfigForm.Catalog.$pristine }" class="form-control input-sm" ng-model="selectedItem.Catalog" />
+                </div>
+
+                <div class="form-group">
+                    <label><strong>Folder</strong></label>
+                    <input type="text" required name="Folder" ng-class="{'has-error': uploadConfigForm.Folder.$invalid && !uploadConfigForm.Folder.$pristine }" class="form-control input-sm" ng-model="selectedItem.Folder" />
+                </div>
+
+                <div class="form-group">
+                    <label><strong>Project</strong></label>
+                    <input type="text" required name="Project" ng-class="{'has-error': uploadConfigForm.Project.$invalid && !uploadConfigForm.Project.$pristine }" class="form-control input-sm" ng-model="selectedItem.Project" />
+                </div>
+
+                <div class="form-group">
+                    <label><strong>Package Name</strong></label>
+                    <input type="text" required name="PackageName" ng-class="{'has-error': uploadConfigForm.PackageName.$invalid && !uploadConfigForm.PackageName.$pristine }" class="form-control input-sm" ng-model="selectedItem.PackageName" />
+                </div>
+
+                <div class="form-group">
+                    <label><strong>View Name</strong></label>
+                    <input type="text" name="ViewName" required ng-class="{'has-error': uploadConfigForm.ViewName.$invalid && !uploadConfigForm.ViewName.$pristine }" class="form-control input-sm" ng-model="selectedItem.ViewName" />
+                </div>
+
+                <div class="form-group">
+                    <label><strong>SSIS File Param</strong></label>
+                    <input type="text" name="SSISFileParam" required ng-class="{'has-error': uploadConfigForm.SSISFileParam.$invalid && !uploadConfigForm.SSISFileParam.$pristine }" class="form-control input-sm" ng-model="selectedItem.SSISFileParam" />
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label><strong>File Upload Path</strong></label>
+                    <input type="text" class="form-control input-sm" ng-class="{'has-error': uploadConfigForm.FileUploadPath.$invalid && !uploadConfigForm.FileUploadPath.$pristine }" required name="FileUploadPath" ng-model="selectedItem.FileUploadPath" />
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="clearfix">
+            <strong class="pull-left">Parameters</strong>
+            <button type="button" class="btn btn-sm btn-primary pull-right" ng-click="addParam()"><i class="glyphicon glyphicon-plus"></i> Add</button>
+        </div>
+
+        <div style="overflow-y:scroll; height:190px;margin-top:15px">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th style="width:14%">Type</th>
+                        <th style="width:15%">View Column</th>
+                        <th style="width:13%">Bind By</th>
+                        <th style="width:15%">SSIS Param</th>
+                        <th style="width:15%">Default Value</th>
+                        <th style="width:50px;">Required</th>
+                        <th style="width:24px">&nbsp;</th>
+                        <th style="width:24px">&nbsp;</th>
+                        <th style="width:24px">&nbsp;</th>
+                        <th style="width:24px">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in selectedItem.Params | orderBy : 'SequenceNumber'" ng-form="paramsForm">
+                        <td>
+                            <span ng-hide="x.Edit" ng-bind="x.Name"></span>
+                            <input ng-show="x.Edit" required ng-class="{'has-error': paramsForm.Name.$invalid && !paramsForm.Name.$pristine }" name="Name" type="text" ng-model="x.Name" class="form-control input-sm" />
+                        </td>
+                        <td>
+                            <span ng-hide="x.Edit" ng-bind="x.Type"></span>
+                            <select ng-show="x.Edit" required name="Type" ng-class="{'has-error': paramsForm.Type.$invalid && !paramsForm.Type.$pristine }" class="form-control input-sm" ng-options="opt for opt in paramTypes" ng-model="x.Type">
+                                <option value="">-Select-</option>
+                            </select>
+                        </td>
+                        <td>
+                            <span ng-hide="x.Edit" ng-bind="x.ViewColumn"></span>
+                            <input ng-show="x.Edit" type="text" ng-model="x.ViewColumn" class="form-control input-sm" />
+                        </td>
+                        <td>
+                            <span ng-hide="x.Edit" ng-bind="x.BindBy"></span>
+                            <select ng-show="x.Edit" name="BindBy" class="form-control input-sm" ng-options="opt.Name as opt.Name for opt in selectedItem.Params | filter: { Edit: false, ViewColumn : '!' } : true" ng-model="x.BindBy">
+                                <option value="">-Select-</option>
+                            </select>
+                        </td>
+                        <td>
+                            <span ng-hide="x.Edit" ng-bind="x.SSISParamName"></span>
+                            <input ng-show="x.Edit" type="text" ng-model="x.SSISParamName" class="form-control input-sm" />
+                        </td>
+                        <td>
+                            <span ng-hide="x.Edit" ng-bind="x.DefaultValue"></span>
+                            <input ng-show="x.Edit" type="text" ng-model="x.DefaultValue" class="form-control input-sm" />
+                        </td>
+                        <td class="text-center">
+                            <i ng-hide="x.Edit" class="glyphicon glyphicon-{{x.IsRequired ? 'check' : 'unchecked' }}"></i>
+                            <input ng-show="x.Edit" type="checkbox" ng-model="x.IsRequired" />
+                        </td>
+                        <td><a href="" ng-hide="$first" title="Move up" ng-click="moveParamUp(x)"><i class="glyphicon glyphicon-chevron-up"></i></a></td>
+                        <td><a href="" ng-hide="$last" title="Move down" ng-click="moveParamDown(x)"><i class="glyphicon glyphicon-chevron-down"></i></a></td>
+                        <td>
+                            <a ng-hide="x.Edit" href="" title="Edit" ng-click="editParam(x)"><i class="glyphicon glyphicon-pencil"></i></a>
+                            <a ng-show="x.Edit" href="" title="Save" ng-click="x.Edit = false"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+                        </td>
+                        <td>
+                            <a ng-hide="x.Edit" href="" title="Delete" ng-click="deleteParam(x)"><i class="glyphicon glyphicon-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal-footer clearfix">
+        <span ng-hide="currentGridRow.Name === undefined" class="pull-left">Last updated on {{currentGridRow.UpdatedDate | date:"dd MMM yyyy"}} by {{currentGridRow.UpdatedBy}}</span>
+        <button type="submit" class="btn btn-primary" ng-disabled="!uploadConfigForm.$valid">Save</button>
+        <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+    </div>
+</form>

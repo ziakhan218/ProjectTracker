@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Administration";
+}
+@section scripts {
+    <script src="~/App/Admin/App.js"></script>
+    <script src="~/App/Admin/Controllers/ctrl-upload-config.js"></script>
+    <script src="~/App/Admin/Controllers/ctrl-manage-users.js"></script>
+}
+
+@section jsCode {
+    angular.bootstrap(document.getElementById("adminApp"), ['adminApp']);
+}
+
+<div id="adminApp">
+    <div ng-view></div>
+</div>
+

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Applications>
+ 
+  <Application name="ITProjectTracker">
+    <Role name="User" adGroup="ITProjectTracker_User" />
+    <Role name="Admin" adGroup="ITProjectTracker_Admin" />
+  </Application>
+ 
+</Applications>

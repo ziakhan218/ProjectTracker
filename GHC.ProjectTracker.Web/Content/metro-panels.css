@@ -1,0 +1,86 @@
+.m-panel {
+  display: block;
+  margin-top: 15px;
+  position: relative;
+  background-color: #ffffff;
+}
+.m-panel > .heading,
+.m-panel > .content {
+  display: block;
+  position: relative;
+    color: #000000;
+}
+.m-panel > .heading {
+  padding: 10px;
+  color: #000000;
+  background-color: rgb(235, 235, 235);
+  cursor: default;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.m-panel > .heading > .title {
+  margin-left: 1rem;
+}
+.m-panel > .heading > .icon + .title {
+  margin-left: 4rem;
+}
+.m-panel > .heading > .icon {
+  position: absolute;
+  color: #ffffff;
+  background-color: rgb(45, 45, 45);
+  padding-top: 12px !important;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  vertical-align: middle;
+  height: 4rem;
+  width: 4rem;
+  text-align: center;
+}
+
+.m-panel > .heading > .icon.red {
+    background-color: #9D1317;
+}
+.m-panel > .heading > .icon.yellow {
+    background-color: #FACC4C;
+}
+.m-panel > .heading > .icon.green {
+    background-color: #5FA834;
+}
+.m-panel > .heading > .icon.purple {
+    background-color: #401B7D;
+}
+.m-panel > .heading > .icon.blue {
+    background-color: #217EC2;
+}
+.m-panel > .content {
+  padding: 1rem;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: rgb(235, 235, 235);
+  background-color: #ffffff;
+  z-index: 1;
+}
+.m-panel.collapsible > .heading {
+  cursor: pointer;
+}
+.m-panel.collapsible > .heading:before {
+  content: "\2212";
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -1.3rem;
+  right: 10px;
+  color: inherit;
+  vertical-align: middle;
+  font-size: 2rem;
+}
+.m-panel.collapsed > .heading:before {
+  content: "\002b";
+}
+.m-panel.collapsed > .content {
+  display: none;
+}

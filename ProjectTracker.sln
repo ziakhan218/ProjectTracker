@@ -1,0 +1,170 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{51C56BBD-FE89-4657-AAF7-03EB90FFD54B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1DD8D54C-D285-4B42-8C3E-66DDFCFD121B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{922B02A6-0CE2-46AF-8F07-1AD75EB7E05D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{1D330E8A-B44E-46C8-A6E6-C8C220D2C789}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{DE0998D8-8BF2-40C2-A070-8CB171F6A0BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{6556ADE7-B3DC-4402-9657-C9831E47E5D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{1A3F4FC7-860C-45BA-AFC4-8DF978A43E67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHC.ProjectTracker.Business", "GHC.ProjectTracker.Business\GHC.ProjectTracker.Business.csproj", "{40BFBBD9-1120-41C1-9684-04BBDBE9B0C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHC.ProjectTracker.Common", "GHC.ProjectTracker.Common\GHC.ProjectTracker.Common.csproj", "{35F09AF9-EB54-458E-84F9-D8F5923E4F3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHC.ProjectTracker.Model", "GHC.ProjectTracker.Model\GHC.ProjectTracker.Model.csproj", "{A259DBB3-EA5B-4E48-A83E-7F1F8B8A46A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHC.ProjectTracker.IService", "GHC.ProjectTracker.IService\GHC.ProjectTracker.IService.csproj", "{7DEB1A25-288B-4663-8477-2044E761C68D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHC.ProjectTracker.Service", "GHC.ProjectTracker.Service\GHC.ProjectTracker.Service.csproj", "{9D13E39B-A722-4433-8B11-07C50238AB91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHC.ProjectTracker.Web", "GHC.ProjectTracker.Web\GHC.ProjectTracker.Web.csproj", "{FDFF1215-FB1B-4C1E-A03F-02510073966C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHC.ProjectTracker.Data", "GHC.ProjectTracker.Data\GHC.ProjectTracker.Data.csproj", "{783EB12C-1E2A-4BC9-8AB2-B5346C99CC1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedAssemblies", "ReferencedAssemblies", "{F8AF9B38-7BB4-43A0-80A1-55E0A96B7CF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{808EFC1B-C1D2-4CD9-B308-D95F3A574B6D}"
+	ProjectSection(SolutionItems) = preProject
+		ReferencedAssemblies\Common\GHC.Common.Logger.dll = ReferencedAssemblies\Common\GHC.Common.Logger.dll
+		ReferencedAssemblies\Common\GHC.Common.Logger.pdb = ReferencedAssemblies\Common\GHC.Common.Logger.pdb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{59545407-CFB2-455E-8DA0-36A83607B525}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microsoft.SqlServer", "Microsoft.SqlServer", "{A4B81A01-D2C9-4417-AE17-1E65FCBC8A7E}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Microsoft.SqlServer\Microsoft.SqlServer.ConnectionInfo.dll = Lib\Microsoft.SqlServer\Microsoft.SqlServer.ConnectionInfo.dll
+		Lib\Microsoft.SqlServer\Microsoft.SqlServer.Diagnostics.STrace.dll = Lib\Microsoft.SqlServer\Microsoft.SqlServer.Diagnostics.STrace.dll
+		Lib\Microsoft.SqlServer\Microsoft.SqlServer.IntegrationServices.Common.ObjectModel.dll = Lib\Microsoft.SqlServer\Microsoft.SqlServer.IntegrationServices.Common.ObjectModel.dll
+		Lib\Microsoft.SqlServer\Microsoft.SqlServer.Management.IntegrationServices.dll = Lib\Microsoft.SqlServer\Microsoft.SqlServer.Management.IntegrationServices.dll
+		Lib\Microsoft.SqlServer\Microsoft.SqlServer.Management.IntegrationServicesEnum.dll = Lib\Microsoft.SqlServer\Microsoft.SqlServer.Management.IntegrationServicesEnum.dll
+		Lib\Microsoft.SqlServer\Microsoft.SqlServer.Management.Sdk.Sfc.dll = Lib\Microsoft.SqlServer\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+		Lib\Microsoft.SqlServer\Microsoft.SqlServer.Smo.dll = Lib\Microsoft.SqlServer\Microsoft.SqlServer.Smo.dll
+		Lib\Microsoft.SqlServer\Microsoft.SqlServer.SqlClrProvider.dll = Lib\Microsoft.SqlServer\Microsoft.SqlServer.SqlClrProvider.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHC.ProjectTracker.Web.Tests", "GHC.ProjectTracker.Web.Tests\GHC.ProjectTracker.Web.Tests.csproj", "{A1EB1F0D-DD74-44F8-B913-F51200FAAAD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Zepto|Any CPU = Zepto|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40BFBBD9-1120-41C1-9684-04BBDBE9B0C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40BFBBD9-1120-41C1-9684-04BBDBE9B0C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40BFBBD9-1120-41C1-9684-04BBDBE9B0C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40BFBBD9-1120-41C1-9684-04BBDBE9B0C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40BFBBD9-1120-41C1-9684-04BBDBE9B0C3}.Zepto|Any CPU.ActiveCfg = Zepto|Any CPU
+		{40BFBBD9-1120-41C1-9684-04BBDBE9B0C3}.Zepto|Any CPU.Build.0 = Zepto|Any CPU
+		{35F09AF9-EB54-458E-84F9-D8F5923E4F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35F09AF9-EB54-458E-84F9-D8F5923E4F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35F09AF9-EB54-458E-84F9-D8F5923E4F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35F09AF9-EB54-458E-84F9-D8F5923E4F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35F09AF9-EB54-458E-84F9-D8F5923E4F3F}.Zepto|Any CPU.ActiveCfg = Zepto|Any CPU
+		{35F09AF9-EB54-458E-84F9-D8F5923E4F3F}.Zepto|Any CPU.Build.0 = Zepto|Any CPU
+		{A259DBB3-EA5B-4E48-A83E-7F1F8B8A46A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A259DBB3-EA5B-4E48-A83E-7F1F8B8A46A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A259DBB3-EA5B-4E48-A83E-7F1F8B8A46A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A259DBB3-EA5B-4E48-A83E-7F1F8B8A46A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A259DBB3-EA5B-4E48-A83E-7F1F8B8A46A1}.Zepto|Any CPU.ActiveCfg = Zepto|Any CPU
+		{A259DBB3-EA5B-4E48-A83E-7F1F8B8A46A1}.Zepto|Any CPU.Build.0 = Zepto|Any CPU
+		{7DEB1A25-288B-4663-8477-2044E761C68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEB1A25-288B-4663-8477-2044E761C68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEB1A25-288B-4663-8477-2044E761C68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEB1A25-288B-4663-8477-2044E761C68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEB1A25-288B-4663-8477-2044E761C68D}.Zepto|Any CPU.ActiveCfg = Zepto|Any CPU
+		{7DEB1A25-288B-4663-8477-2044E761C68D}.Zepto|Any CPU.Build.0 = Zepto|Any CPU
+		{9D13E39B-A722-4433-8B11-07C50238AB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D13E39B-A722-4433-8B11-07C50238AB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D13E39B-A722-4433-8B11-07C50238AB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D13E39B-A722-4433-8B11-07C50238AB91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D13E39B-A722-4433-8B11-07C50238AB91}.Zepto|Any CPU.ActiveCfg = Zepto|Any CPU
+		{9D13E39B-A722-4433-8B11-07C50238AB91}.Zepto|Any CPU.Build.0 = Zepto|Any CPU
+		{FDFF1215-FB1B-4C1E-A03F-02510073966C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDFF1215-FB1B-4C1E-A03F-02510073966C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDFF1215-FB1B-4C1E-A03F-02510073966C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDFF1215-FB1B-4C1E-A03F-02510073966C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDFF1215-FB1B-4C1E-A03F-02510073966C}.Zepto|Any CPU.ActiveCfg = Zepto|Any CPU
+		{FDFF1215-FB1B-4C1E-A03F-02510073966C}.Zepto|Any CPU.Build.0 = Zepto|Any CPU
+		{783EB12C-1E2A-4BC9-8AB2-B5346C99CC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{783EB12C-1E2A-4BC9-8AB2-B5346C99CC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{783EB12C-1E2A-4BC9-8AB2-B5346C99CC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{783EB12C-1E2A-4BC9-8AB2-B5346C99CC1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{783EB12C-1E2A-4BC9-8AB2-B5346C99CC1E}.Zepto|Any CPU.ActiveCfg = Zepto|Any CPU
+		{783EB12C-1E2A-4BC9-8AB2-B5346C99CC1E}.Zepto|Any CPU.Build.0 = Zepto|Any CPU
+		{A1EB1F0D-DD74-44F8-B913-F51200FAAAD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1EB1F0D-DD74-44F8-B913-F51200FAAAD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1EB1F0D-DD74-44F8-B913-F51200FAAAD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1EB1F0D-DD74-44F8-B913-F51200FAAAD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1EB1F0D-DD74-44F8-B913-F51200FAAAD6}.Zepto|Any CPU.ActiveCfg = Release|Any CPU
+		{A1EB1F0D-DD74-44F8-B913-F51200FAAAD6}.Zepto|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{40BFBBD9-1120-41C1-9684-04BBDBE9B0C3} = {1D330E8A-B44E-46C8-A6E6-C8C220D2C789}
+		{35F09AF9-EB54-458E-84F9-D8F5923E4F3F} = {1A3F4FC7-860C-45BA-AFC4-8DF978A43E67}
+		{A259DBB3-EA5B-4E48-A83E-7F1F8B8A46A1} = {922B02A6-0CE2-46AF-8F07-1AD75EB7E05D}
+		{7DEB1A25-288B-4663-8477-2044E761C68D} = {6556ADE7-B3DC-4402-9657-C9831E47E5D9}
+		{9D13E39B-A722-4433-8B11-07C50238AB91} = {6556ADE7-B3DC-4402-9657-C9831E47E5D9}
+		{FDFF1215-FB1B-4C1E-A03F-02510073966C} = {51C56BBD-FE89-4657-AAF7-03EB90FFD54B}
+		{783EB12C-1E2A-4BC9-8AB2-B5346C99CC1E} = {DE0998D8-8BF2-40C2-A070-8CB171F6A0BD}
+		{808EFC1B-C1D2-4CD9-B308-D95F3A574B6D} = {F8AF9B38-7BB4-43A0-80A1-55E0A96B7CF2}
+		{A4B81A01-D2C9-4417-AE17-1E65FCBC8A7E} = {59545407-CFB2-455E-8DA0-36A83607B525}
+		{A1EB1F0D-DD74-44F8-B913-F51200FAAAD6} = {1DD8D54C-D285-4B42-8C3E-66DDFCFD121B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.ExceptionHandling.Logging.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://grosvenorbi.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = GHC.ProjectTracker.Common\\GHC.ProjectTracker.Common.csproj
+		SccProjectTopLevelParentUniqueName1 = ProjectTracker.sln
+		SccProjectName1 = GHC.ProjectTracker.Common
+		SccLocalPath1 = GHC.ProjectTracker.Common
+		SccProjectUniqueName2 = GHC.ProjectTracker.Model\\GHC.ProjectTracker.Model.csproj
+		SccProjectTopLevelParentUniqueName2 = ProjectTracker.sln
+		SccProjectName2 = GHC.ProjectTracker.Model
+		SccLocalPath2 = GHC.ProjectTracker.Model
+		SccProjectUniqueName3 = GHC.ProjectTracker.IService\\GHC.ProjectTracker.IService.csproj
+		SccProjectTopLevelParentUniqueName3 = ProjectTracker.sln
+		SccProjectName3 = GHC.ProjectTracker.IService
+		SccLocalPath3 = GHC.ProjectTracker.IService
+		SccProjectUniqueName4 = GHC.ProjectTracker.Web\\GHC.ProjectTracker.Web.csproj
+		SccProjectTopLevelParentUniqueName4 = ProjectTracker.sln
+		SccProjectName4 = GHC.ProjectTracker.Web
+		SccLocalPath4 = GHC.ProjectTracker.Web
+		SccProjectUniqueName5 = GHC.ProjectTracker.Data\\GHC.ProjectTracker.Data.csproj
+		SccProjectTopLevelParentUniqueName5 = ProjectTracker.sln
+		SccProjectName5 = GHC.ProjectTracker.Data
+		SccLocalPath5 = GHC.ProjectTracker.Data
+		SccProjectUniqueName6 = GHC.ProjectTracker.Business\\GHC.ProjectTracker.Business.csproj
+		SccProjectTopLevelParentUniqueName6 = ProjectTracker.sln
+		SccProjectName6 = GHC.ProjectTracker.Business
+		SccLocalPath6 = GHC.ProjectTracker.Business
+		SccProjectUniqueName7 = GHC.ProjectTracker.Service\\GHC.ProjectTracker.Service.csproj
+		SccProjectTopLevelParentUniqueName7 = ProjectTracker.sln
+		SccProjectName7 = GHC.ProjectTracker.Service
+		SccLocalPath7 = GHC.ProjectTracker.Service
+		SccProjectUniqueName8 = GHC.ProjectTracker.Web.Tests\\GHC.ProjectTracker.Web.Tests.csproj
+		SccProjectTopLevelParentUniqueName8 = ProjectTracker.sln
+		SccProjectName8 = GHC.ProjectTracker.Web.Tests
+		SccLocalPath8 = GHC.ProjectTracker.Web.Tests
+	EndGlobalSection
+EndGlobal

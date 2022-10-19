@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "IT Project Tracker";
+    ViewBag.Logo = "mayfairandbelgravia_Retail.png";
+    ViewBag.AppTitle = "Grosvenor Fund Management";
+}
+
+@section scripts {
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="~/App/ITProjectTracker/App.js"></script>
+<script src="~/App/ITProjectTracker/Controllers/ProjectTrackerController.js"></script>
+<script src="~/App/ITProjectTracker/Controllers/ProjectDetailsController.js"></script>
+<script src="~/App/ITProjectTracker/Controllers/BacklogItemsController.js"></script>
+<script src="~/App/ITProjectTracker/Controllers/Project ResourcesController.js"></script>
+<script src="~/Scripts/angular-csv-import.js"></script>
+<script src="~/Scripts/sequid.js"></script>
+<script src="~/Scripts/xlsx.core.min.js"></script>
+<script src="~/Scripts/jszip.js"></script>
+<script src="~/Scripts/Blob.js"></script>
+<script src="~/Scripts/FileSaver.js"></script>
+}
+
+@section jsCode {
+    angular.bootstrap(document.getElementById('ITProjectTrackerApp'), ['ITProjectTrackerApp']);
+}
+
+<div id="ITProjectTrackerApp">
+    <div ng-view></div>
+</div>

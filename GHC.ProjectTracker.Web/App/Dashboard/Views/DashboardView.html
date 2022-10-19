@@ -1,0 +1,96 @@
+﻿<style>
+    .tableStyles th, td {
+        white-space: normal !important;
+    }
+
+    a {
+        cursor: pointer;
+    }
+</style>
+<br />
+<div class="cp-panel">
+    <span ng-hide="isDashboardLoaded"> <img src='/Images/ajax-loader.gif'>Loading...</span>
+    <div ng-if1="isDashboardLoaded && userHaveGBIOpCo && isUserHaveRole" class="row">
+        <div ng-if1="userHaveEDPTeam && !userHaveSustainabilityTeam" class="m-panel m-panel-1line col-md-6 collapsible" data-role="panel" style="margin-bottom: 15px;">
+            <div class="heading">
+                <span class="icon glyphicon glyphicon-exclamation-sign"></span>
+                <span class="title">Projects by Risks</span>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span ng-show="loading_priorityChart"> <img src='/Images/ajax-loader.gif'>Loading...</span>
+                        <div id="projectPrioritiesChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if1="userHaveEDPTeam && !userHaveSustainabilityTeam" class="m-panel m-panel-1line col-md-6 collapsible" data-role="panel" style="margin-bottom: 15px;">
+            <div class="heading">
+                <span class="icon glyphicon glyphicon-list-alt"></span>
+                <span class="title">Project Status</span>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span ng-show="loading_statusChart"> <img src='/Images/ajax-loader.gif'>Loading...</span>
+                        <div id="projectStatusChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="isDashboardLoaded && !userHaveGBIOpCo" class="row">
+        <div class="col-md-12">
+            <br />
+            Insufficient Privileges to see dashboard section.
+            <br />
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectPrioritiesModal" tabindex="-1" role="dialog" aria-labelledby="projectPrioritiesModalLabel" aria-hidden="true">
+        <div class="modal-dialog dashboard-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">{{priorityChartHeading}} Project Priorities Data</h4>
+                </div>
+                <div class="modal-body" style="min-height: 450px;">
+                    <div class="content">
+                        <span ng-show="loading_priorityGrid"> <img src='/Images/ajax-loader.gif'>Loading...</span>
+                        <div ng-show="!loading_priorityGrid">
+                            <!--<div ui-grid="projectPrioritiesGrid" ui-grid-selection class="angular-grid-5results" style="width: 1110px !important; height: 450px; padding-bottom: 2px;"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /.modal-content -->
+        </div> <!-- /.modal-dialog -->
+    </div> <!-- /.modal -->
+
+    <div class="modal fade" id="projectStatusModal" tabindex="-1" role="dialog" aria-labelledby="projectStatusModalLabel" aria-hidden="true">
+        <div class="modal-dialog dashboard-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">{{statusChartHeading}} Project Status Data</h4>
+                </div>
+                <div class="modal-body" style="min-height: 450px;">
+                    <div class="content">
+                        <span ng-show="loading_statusGrid"> <img src='/Images/ajax-loader.gif'>Loading...</span>
+                        <div ng-show="!loading_statusGrid">
+                            <div ui-grid="projectStatusGrid" ui-grid-selection class="angular-grid-5results" style="width: 1110px !important; height: 450px; padding-bottom: 2px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /.modal-content -->
+        </div> <!-- /.modal-dialog -->
+    </div> <!-- /.modal -->
+
+    <div class="modal fade" style="overflow-x:hidden;overflow-y:auto" id="myModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog dashboard-modal" id="modalContainer">
+            <div class="cp-results-content clearfix" ng-include src="selectedView.url"></div>
+        </div> <!-- /.modal-dialog -->
+    </div> <!-- /.modal -->
+
+
+</div>

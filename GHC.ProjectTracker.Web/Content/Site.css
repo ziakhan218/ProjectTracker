@@ -1,0 +1,521 @@
+﻿body {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+.ui-menu-item {
+	 width:190px; 
+}
+.ui-menu {
+	z-index: 9999;
+}
+
+.ui-autocomplete .ui-menu-item {
+	width: 375px !important;
+	padding: 1px;
+	list-style-image: none;
+}
+
+.ui-autocomplete .ui-menu-item .panel {
+	margin: 0px !important;
+	width: 100%;
+	height: 130px;
+}
+
+.property-carousel .panel {
+	margin: 0px !important;
+
+}
+
+.ui-autocomplete .ui-menu-item .propertyImage{
+	width: 128px !important;
+	height: 128px !important;
+}
+
+.angular-grid-20results {
+  width: 100%;  
+  height: 760px;
+}
+
+.angular-grid-15results {
+  width: 100%;  
+  height: 595px;
+}
+
+.angular-grid-10results {
+  width: 100%;  
+  height: 348px;
+}
+
+.angular-grid-5results {
+  width: 100%;  
+  height: 185px;
+}
+
+.dropdownheading {
+	font-size: 12px;
+	line-height: 150% !important;
+}
+
+.dropdowndetail {
+	font-size: 10px;
+}
+
+.div-dropdownimg {
+	float:left; 
+	padding-top: 3px;
+	padding-right: 10px;
+	padding-bottom: 3px;
+}
+
+.div-dropdowntext {
+	float: left;
+	width: 230px;
+}
+
+.img-star {
+	float: right;
+	cursor: pointer;
+}
+
+.img-thumbnail {
+	width: 110px;
+	height: 110px;
+}
+
+#txtSearch {
+	max-width: 377px !important;
+	width: 377px !important;
+}
+
+  .dl-leftaligned dt {
+	text-align: left !important;
+  }
+
+  .dl-horizontal dd {
+	  margin-bottom: 10px !important;
+  }
+
+/* Google Map Styles */
+.gm-style-iw {
+	width: 430px !important;
+	max-width: 430px !important;
+    padding: 0px !important;
+}
+
+.gm-style-iw .panel{
+	width: 420px;
+	margin: 0px;
+	border: 0px;
+}
+/* END - Google Map Styles */
+.form-fixer
+{
+    padding : 2px 4px;
+}
+
+.form-horizontal .form-group input, 
+.form-horizontal .form-group select
+ { 
+    padding : 2px 4px;
+}
+
+.form-horizontal .form-group label
+ { 
+    padding-top: 4px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*.form-group .form-control
+ { 
+    height: 24px;
+}*/
+
+label.error{
+    display:none !important;
+}
+
+.panel-body 
+{
+   padding : 10px 5px 10px 5px;
+}
+
+.form-control-number{
+    padding:0 0 0 10px;
+}
+
+/*#inputItemModal .form-control{
+    width:100% !important;
+}*/
+
+.panel
+{
+    padding-left: 0px;
+}
+
+.btn 
+{
+    padding: 4px 10px;
+}
+
+.nav-tabs.nav-justified 
+{
+  width: auto;
+  margin: 0 -16px;
+}
+
+
+.cp-data-list dt
+{
+    font-family: 'amplitude-mediumregular';
+}
+
+.sectionheader
+{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 10px;
+    color: #333;
+}
+
+.col-sm-3 
+{
+    padding-left: 0px !important;
+}
+
+div.percenttextbox input[type=text]
+{
+    width: 60px;
+}
+
+.table-form td {
+    padding:2px;
+}
+
+.table-form td select{
+    width:90%
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+.ui-grid-row:hover input {
+   color: #000 !important;
+}
+
+multiselect .btn-group, multiselect .btn-group .btn {
+    width: 100%;
+    margin-bottom:1px;
+    text-align:left;
+    clear:both;
+    height:34px;
+    font-family:"amplitude-regularregular";
+}
+
+multiselect .btn-group .btn .caret {
+    float:right;
+    margin-top:8px;
+}
+
+.input-group .dropdown-menu {
+    width:auto;
+}
+
+.input-group-for-q .dropdown-menu{
+    margin-top:32px;
+}
+
+.modal {
+    text-align: center;
+    padding: 0 !important;
+}
+
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.dropdown-menu table{
+    outline:none;
+}
+
+#badDataView {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#badDataView th, #badDataView td {
+    padding: 3px;
+    border: 1px solid #e5e5e5;
+}
+
+.ui-grid-filter-select{
+    height:30px;
+}
+
+.btn-group .active{
+    z-index:0 !important;
+}
+
+.range-table{
+    width:100%;
+}
+.range-table td{
+    width:24%;
+}
+.range-table .saperator{
+    width:2px !important;
+}
+.range-table input{
+    width:100%;
+    height:34px;
+    border:1px solid #ccc;
+    background-color:#fff;
+    border-left:none;
+    padding:0 5px;
+}
+
+.range-table select{
+    height:34px;
+    width:100%;
+    border:1px solid #ccc;
+    background-color:#fff;
+}
+
+.amp-face{
+    font-family:"amplitude-regularregular";
+}
+
+.retail-dd{
+    border:1px solid #ccc;
+    background-color:#fff;
+    width:100%;
+    height:34px;
+    padding:0 0 0 5px;
+}
+
+.list-items{
+    max-height:250px;
+    overflow:auto;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.list-items li a{
+    border-bottom: 1px solid #ddd;
+    display:block;
+    cursor:pointer;
+    padding:4px 0 4px 20px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color:#333;
+}
+
+.list-items>li>a:focus, .list-items>li>a:hover {
+	color: #fff;
+	text-decoration: none;
+	background-color: #1a7462;
+}
+
+.showMore-text{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:13px;
+    color:rgb(0,163,232);
+    text-decoration:underline;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.min-max-control{
+    width:100%;
+    text-align:center;
+    font-family:'new_century_schoolbookroman';
+}
+
+.min-max-control input{
+    width:50%;
+    height:34px;
+    border:1px solid #ccc;
+    padding:0 10px;
+    font-weight:normal;
+    font-family:"amplitude-regularregular";
+}
+
+.min-max-control input:first-child{
+    border-right-width:0px;
+}
+
+.white-link, .white-link:hover{
+    color:#fff;
+    text-decoration:none;
+    display:inline-block;
+    margin-left:3px;
+    cursor:pointer;
+}
+
+.has-error { /*, input.ng-invalid{*/
+    border:1px solid red !important;
+}
+
+#cashflow-tabs a {
+    cursor:pointer;
+}
+
+.cf-sheet{
+    width:100%;
+    clear:both;
+    height:auto;
+    font-family:"amplitude-regularregular";
+}
+
+.cf-sheet .cf-sheet-left{
+    float:left;
+    width:40%;
+}
+
+.cf-sheet .cf-sheet-right{
+    float:right;
+    width:60%;
+    padding-bottom:6px;
+}
+
+.cf-sheet table{
+    border-spacing: 7px;
+    border-collapse: separate;
+}
+
+.cf-sheet table td{
+    height:34px;
+    min-width:100px;
+    position:relative;
+}
+
+.cf-sheet table input{
+    width:100%;
+    border:1px solid #d9d9d9;
+    height:34px;
+    padding:8px;
+}
+
+.cf-sheet table .btn-danger{
+    position:absolute;
+    top:4px;
+    right:5px;
+}
+
+.cf-sheet .period-head{
+    color:#FFF;
+    background-color:#575757;
+}
+
+.cf-sheet .base-stress-head{
+    color:#FFF;
+    background-color:#808080;
+}
+
+.cf-sheet .account-total-head, .acc-total-head{
+    color:#000;
+    background-color:#a6a6a6;
+}
+
+.acc-total-highlite{
+    background-color:#14594b;
+}
+
+.text-underlined{
+    text-decoration:underline;
+}
+
+.text-bold{
+    font-weight:bold;
+}
+
+.cf-sheet .explaination-row input{
+    padding-right:45px;
+}
+
+.cf-sheet .opco-total-head{
+    color:#000;
+    background-color:#bdbdbd;
+}
+
+.cf-sheet .reconciliation-total-foot{
+    background-color:#d9d9d9;
+}
+
+.cf-sheet .reconciliation-total-green{
+    background-color:#00b04f;
+}
+
+.cf-sheet .reconciliation-total-red{
+    background-color: #ff0000;
+}
+
+.bg-white{
+    background-color:#fff;
+}
+
+.readonly{
+    background-color:#d9d9d9;
+}
+
+.text-middle{
+    vertical-align:middle !important;
+}
+
+.text-white{
+    color:#ffffff !important;
+}
+
+.text-ellipsis{
+    white-space:nowrap;
+    overflow:hidden;
+    display:inline-block;
+    width:33px;
+    text-overflow:ellipsis;
+    text-align:center;
+}
+
+.preview-td{
+    width:43px;
+}
+.noDataTxt {
+    position: absolute;
+    top: 300px;
+    opacity: 0.55;
+    font-size: 1.5em;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+}
